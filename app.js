@@ -7,8 +7,17 @@ const jwt = require('jsonwebtoken');
 // It's express
 const app = express()
 
+const bodyParser = require('body-parser');
+require('dotenv').config()
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 // Public folder
 app.use(express.static('public'))
+// Cookie Parser
+app.use(cookieParser());
+
 
 // View Engine - Handlebars
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -33,12 +42,16 @@ let checkAuth = (req, res, next) => {
   next()
 }
 
-// // Run checkAuth
+// Run checkAuth
 app.use(checkAuth)
+
 
 app.get('/', (req, res) => {
     res.render('home')
 })
+
+require('./controllers/auth.js')(app);
+
 
 
 app.listen(process.env.PORT || 3000, function(){

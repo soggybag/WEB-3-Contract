@@ -8,7 +8,7 @@ module.exports = function(app) {
     // Register page
     app.get('/register', (req, res) => {
         let bodytype = utils.checklog("home", req.user)
-        res.render('register', {bodytype, user: req.user})
+        res.render('auth/register', {bodytype, user: req.user})
     })
 
     // Actual registry
@@ -56,7 +56,7 @@ module.exports = function(app) {
     // Login; render the login page
     app.get('/login', (req, res) => {
         let bodytype = utils.checklog("home", req.user)
-        res.render('login', {bodytype, user: req.user});
+        res.render('auth/login', {bodytype, user: req.user});
     });
 
     // LOGIN
