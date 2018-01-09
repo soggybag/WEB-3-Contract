@@ -12,14 +12,15 @@ const PostSchema = new Schema({
 })
 
 
-PostSchema.pre('save', (next) => {
+PostSchema.pre('save', function(next){
   // SET createdAt AND updatedAt
-  const now = new Date()
-  this.updatedAt = now
-  if (!this.createdAt) {
-    this.createdAt = now
+  var now = new Date();
+  this.updatedAt = now;
+  if ( !this.createdAt ) {
+    this.createdAt = now;
   }
-  next()
-})
+
+  next();
+});
 
 module.exports = mongoose.model('Post', PostSchema)
