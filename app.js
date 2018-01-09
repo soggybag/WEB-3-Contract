@@ -51,6 +51,7 @@ app.get('/', (req, res) => {
 })
 
 require('./controllers/auth.js')(app);
+require('./controllers/posts.js')(app);
 
 
 

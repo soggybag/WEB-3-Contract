@@ -26,9 +26,7 @@ module.exports = (app) => {
   });
 
   app.get('/posts/new', function (req, res) {
-
       var currentUser = req.user
-
       res.render('post-new', {currentUser: currentUser});
    })
 
