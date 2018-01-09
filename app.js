@@ -44,10 +44,11 @@ let checkAuth = (req, res, next) => {
 
 // Run checkAuth
 app.use(checkAuth)
-
+const utils = require('./controllers/utils.js')
 
 app.get('/', (req, res) => {
-    res.render('home')
+    let bodytype = utils.checklog("home", req.user)
+    res.render('home', {bodytype, user: req.user})
 })
 
 require('./controllers/auth.js')(app);

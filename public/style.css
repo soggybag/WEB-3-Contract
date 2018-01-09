@@ -1,1 +1,16 @@
 /* Woo */
+.logged-in {
+    display: none;
+}
+
+.logged-out {
+    display: block;
+}
+
+.logged .logged-in {
+    display: block;
+}
+
+.logged .logged-out{
+    display: none;
+}

@@ -1,3 +1,41 @@
-Testing - Main Layout
-</br>
+<!-- main.handlebars -->
+<!DOCTYPE html>
+<head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../style.css"/>
+</head>
+<body class="{{bodytype}}">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Reddit</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></li>
+        <li><a class="nav-link" href="/posts/new">New Post</a></li>
+
+    </ul>
+    <span class="navbar-text logged-in" style="padding:0px 10px">Logged in:<br>{{user.username}}</span>
+
+    <form class="form-inline" style="padding:0px 10px;">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+      <ul class="navbar-nav navbar-right">
+          <li><a class="nav-link nav-link logged-out" href="/login">Login</a></li>
+          <li><a class="nav-link nav-link logged-out" href="/sign-up">Sign Up</a></li>
+          <li><a class="nav-item nav-link logged-in" href="/logout">Log-out</a></li>
+      </ul>
+
+
+  </div>
+</nav>
+
+<br>
+<div class="container">
 {{{body}}}
+</body>
+</div>
