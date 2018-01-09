@@ -1,6 +1,7 @@
 const User = require('../models/user.js')
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+const utils = require('./utils')
 
 
 module.exports = function(app) {
