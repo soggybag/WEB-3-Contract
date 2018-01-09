@@ -1,1 +1,8 @@
 Testing - Home
+
+{{#each posts}}
+<li class="list-group-item">
+  <a href="/posts/{{this._id}}" class="lead">{{this.title}}</a>
+</li>
+
+{{/each}}
