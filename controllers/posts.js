@@ -37,10 +37,10 @@ module.exports = (app) => {
   app.get('/posts/:id', function (req, res) {
 
       var currentUser = req.user;
-      var currentAuthor = Game.author;
+      var currentAuthor = Post.author;
 
      // LOOK UP THE POST
-     Game.findById(req.params.id).populate('author').populate('comments').then((game) => {
+     Post.findById(req.params.id).populate('author').then((post) => {
          res.render('post-show', { post, currentUser })
        }).catch((err) => {
          console.log(err.message)
