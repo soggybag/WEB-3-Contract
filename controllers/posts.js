@@ -1,8 +1,11 @@
 const Post = require('../models/post')
 const User = require('../models/user')
+const utils = require('./utils')
 
 module.exports = (app) => {
+
   // CREATE
+
   app.post('/posts', function (req, res) {
       if (req.user) {
           // INSTANTIATE INSTANCE OF POST MODEL

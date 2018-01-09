@@ -1,13 +1,12 @@
 const User = require('../models/user.js')
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-const utils = require('./utils')
 
 
 module.exports = function(app) {
     // Register page
     app.get('/register', (req, res) => {
-        let bodytype = utils.checklog("home", req.user)
+        let bodytype = utils.checklog("register", req.user)
         res.render('auth/register', {bodytype, user: req.user})
     })
 
@@ -55,7 +54,7 @@ module.exports = function(app) {
 
     // Login; render the login page
     app.get('/login', (req, res) => {
-        let bodytype = utils.checklog("home", req.user)
+        let bodytype = utils.checklog("login", req.user)
         res.render('auth/login', {bodytype, user: req.user});
     });
 
