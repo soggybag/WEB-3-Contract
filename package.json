@@ -20,12 +20,18 @@
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
+    "debug": "^3.1.0",
+    "depd": "^1.1.1",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
+    "finalhandler": "^1.1.0",
     "handlebars": "^4.0.11",
     "jsonwebtoken": "^8.1.0",
+    "merge-descriptors": "^1.0.1",
     "mongoose": "^4.13.9",
+    "ms": "^2.1.1",
     "nodemon": "^1.14.9"
-  }
+  },
+  "devDependencies": {}
 }

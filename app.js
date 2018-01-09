@@ -37,7 +37,6 @@ let checkAuth = (req, res, next) => {
     let token = req.cookies.nToken;
     let decodedToken = jwt.decode(token, { complete: true }) || {};
     req.user = decodedToken.payload;
-    console.log("User currently logged in", req.user.username)
   }
   next()
 }
@@ -48,6 +47,8 @@ const utils = require('./controllers/utils.js')
 
 app.get('/', (req, res) => {
     let bodytype = utils.checklog("home", req.user)
+
+
     res.render('home', {bodytype, user: req.user})
 })
 

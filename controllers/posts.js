@@ -3,7 +3,15 @@ const User = require('../models/user')
 const utils = require('./utils')
 
 module.exports = (app) => {
+    app.get('/all', (req, res) => {
+        let bodytype = utils.checklog("view-all", req.user)
+        Post.find().populate('author').then((post) => {
+            res.render('all-posts', {post, bodytype, user: req.user})
+          }).catch((err) => {
+            console.log(err.message)
+          })
 
+    })
   // CREATE
 
   app.post('/posts', function (req, res) {
