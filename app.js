@@ -45,13 +45,6 @@ let checkAuth = (req, res, next) => {
 app.use(checkAuth)
 const utils = require('./controllers/utils.js')
 
-app.get('/', (req, res) => {
-    let bodytype = utils.checklog("home", req.user)
-
-
-    res.render('home', {bodytype, user: req.user})
-})
-
 require('./controllers/auth.js')(app);
 require('./controllers/posts.js')(app);
 

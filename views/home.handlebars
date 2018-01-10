@@ -1,8 +1,14 @@
-Testing - Home
-
-{{#each posts}}
-<li class="list-group-item">
-  <a href="/posts/{{this._id}}" class="lead">{{this.title}}</a>
-</li>
-
+<style>
+.in-a-box{
+    border: 1px solid grey;
+    padding: 20px;
+    border-radius: 10px;
+}
+</style>
+Recent Posts
+{{#each post}}
+    <div class="in-a-box">
+    <a href="/posts/{{this.id}}"><h2>{{this.title}}</h2></a>
+    <p><a href="location?q={{this.location}}">Location: {{this.location}}</a></p>
+</div>
 {{/each}}
