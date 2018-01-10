@@ -3,16 +3,16 @@ const User = require('../models/user')
 const utils = require('./utils')
 
 module.exports = (app) => {
-    app.get('/all', (req, res) => {
+    app.get('/', (req, res) => {
         let bodytype = utils.checklog("view-all", req.user)
         Post.find().populate('author').then((post) => {
-            res.render('all-posts', {post, bodytype, user: req.user})
+            res.render('home', {post, bodytype, user: req.user})
           }).catch((err) => {
             console.log(err.message)
           })
 
     })
-
+// Take this out when you're set; debugging
     app.get('/location', (req, res) => {
         let bodytype = utils.checklog("loc", req.user)
         Post.find({'location': req.query.q}).populate('author').then((post) => {
