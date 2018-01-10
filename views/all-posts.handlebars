@@ -9,6 +9,6 @@
 {{#each post}}
     <div class="in-a-box">
     <a href="/posts/{{this.id}}"><h2>{{this.title}}</h2></a>
-    <p>{{this.location}}</p>
+    <p><a href="location?q={{this.location}}">{{this.location}}</a></p>
 </div>
 {{/each}}

@@ -12,6 +12,16 @@ module.exports = (app) => {
           })
 
     })
+
+    app.get('/location', (req, res) => {
+        let bodytype = utils.checklog("loc", req.user)
+        Post.find({'location': req.query.q}).populate('author').then((post) => {
+            console.log(post)
+            res.render('all-posts', {post, bodytype, user: req.user})
+          }).catch((err) => {
+            console.log(err.message)
+          })
+    })
   // CREATE
 
   app.post('/posts', function (req, res) {
@@ -54,4 +64,5 @@ module.exports = (app) => {
          console.log(err.message)
        })
    })
+
 };
