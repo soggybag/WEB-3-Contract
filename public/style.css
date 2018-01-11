@@ -15,6 +15,9 @@
     display: none !important;
 }
 
+.container{
+    margin-top: 40px;
+}
 /* Navbar */
 
 .stick-navbar{
