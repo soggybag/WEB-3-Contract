@@ -9,10 +9,10 @@
 <body class="{{bodytype}}">
 <div class="stick-navbar">
     <ul id="navigation">
-        <div id="page-nav">
-            <li><h1 id="logo">&#9783;</h1></li>
-            <li>Questions</li>
-            <li>Users</li>
+        <!--  Nav  -->
+            <a id="logo" href="/"><li><h2>&#9783;</h1></li></a>
+            <a href="/"><li>Questions</li></a>
+            <a href="/"><li>Users</li></a>
             <li>
                 <form class="search-set form-inline" action="/location">
                     <input id="search-button" class="form-control mr-sm-2 searchbar" type="search"  name="q" placeholder="Search" aria-label="Search">
@@ -20,13 +20,11 @@
                     <button id="search-submit" type="submit">&#128269;</button>
                 </form>
             </li>
-        </div>
-        <div id="user-nav">
-            <li class="logged-in">{{user}}</li>
-            <li class="logged-in">Log-out</li>
-            <li class="logged-out">Log-in</li>
-            <li class="logged-out">Register</li>
-        </div>
+        <!-- Auth -->
+            <li class="logged-in">{{user.username}}</li>
+            <a href="/logout"><li class="logged-in">Log-out</li></a>
+            <a href="/login"><li class="logged-out">Log-in</li></a>
+            <a href="/register"><li class="logged-out">Register</li></a>
     </ul>
 </div>
 
