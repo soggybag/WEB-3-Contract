@@ -17,7 +17,7 @@ module.exports = (app) => {
         let bodytype = utils.checklog("loc", req.user)
         Post.find({'location': req.query.q}).populate('author').then((post) => {
             console.log(post)
-            res.render('all-posts', {post, bodytype, user: req.user})
+            res.render('home', {post, bodytype, user: req.user})
           }).catch((err) => {
             console.log(err.message)
           })

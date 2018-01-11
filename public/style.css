@@ -1,16 +1,102 @@
-/* Woo */
+/* Logged in components */
 .logged-in {
-    display: none;
+    display: none !important;
 }
 
 .logged-out {
-    display: block;
+    display: inline !important;
 }
 
 .logged .logged-in {
-    display: block;
+    display: inline !important;
 }
 
 .logged .logged-out{
+    display: none !important;
+}
+
+/* Navbar */
+
+.stick-navbar{
+    position: sticky;
+    display: inline-block;
+    top: 0px;
+    border-top: 4px solid green;
+    border-bottom: 1px solid #BBB;
+    box-shadow: 0px 1px 3px #BBB;
+    width: 100%;
+}
+
+#navigation{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+
+.stick-navbar *{
+    margin: 0px 5px;
+}
+
+
+.stick-navbar ul{
+    list-style: none;
+
+}
+
+.stick-navbar ul *{
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+
+}
+
+.stick-navbar ul li:hover{
+    background-color: #BBB;
+}
+
+
+
+/* Searches */
+.search-set{
+    white-space: nowrap;
+}
+
+#search-button{
+    float: right;
+    width: 75%;
+    margin: 0px;
+}
+
+#search-button:focus{
+    position: relative;
+    animation-name: search-stretch;
+    animation-duration: 0.5s;
+    width: 160%;
+}
+
+#search-button + button{
+    position: relative;
+    opacity: 0;
+    left: 80%;
     display: none;
+    width: 15%;
+    height: 70%;
+    border-radius: 10px;
+}
+#search-button:focus + button{
+    display: inherit;
+    opacity: 100;
+}
+
+#search-submit:active{
+    display: inherit;
+    opacity: 100;
+}
+
+
+@keyframes search-stretch {
+    from {width: 75%;}
+    to {width: 160%;}
 }
