@@ -55,6 +55,7 @@ module.exports = (app) => {
                     "score": answer.voteScore
                 }
                 res.end(JSON.stringify(response));
+                // res.status(200).json({message:"Up vote successful"});
             }
             // If user is inside list of people who already voted, deny
             else if(answer.upVotes.includes(req.user._id)){
