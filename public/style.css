@@ -106,3 +106,34 @@
     display: inherit;
     opacity: 100;
 }
+
+/* Posts */
+.answer{
+    border-top: 1px solid lightgrey;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.answer .answer-content{
+    margin-left: 50px;
+}
+#vote-down{
+    margin-top: 5px;
+    height: 20px;
+    width: 20px;
+    border-top: 20px solid black;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+#vote-up{
+    margin-bottom: 5px;
+    height: 20px;
+    width: 20px;
+    border-bottom: 20px solid black;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+
+}

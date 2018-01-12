@@ -1,26 +1,38 @@
 
 <!-- post-show -->
+<script rel="script" src="/js/posts.js"></script>
 
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
     <a href="{{post.url}}" class="lead">{{post.title}}</a>
     <p>Location: {{post.location}}</p>
     <p>Date: {{post.createdAt}}</p>
+    <p>Author: {{post.author.username}}</p>
   </div>
 
-  <!-- <form action="/posts/{{post._id}}/comments" method="post">
+<form action="/posts/{{post._id}}/comments" method="post">
     <textarea class='form-control' name="content" placeholder="Comment"></textarea>
     <div class="text-right">
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
-  </form>
-
-  <h2>Comments</h2>
-
-  {{#each post.comments}}
-    <li class="list-group-item">
-      <p> > {{this.content}}</p>
-    </li>
-  {{/each}} -->
+</form>
 
 </div>
+<h2>Comments</h2>
+
+{{#each post.answers}}
+    <div class="answer">
+        <div class="answer-scoring">
+            <form class="vote-up" data-id="{{this._id}}">
+                <div id="vote-up" class="submit-button"></div>
+            </form>
+            <p id="answer-{{this._id}}">{{this.voteScore}}</p>
+            <form class="vote-down" data-id="{{this._id}}">
+                <div id="vote-down" class="submit-button"></div>
+            </form>
+        </div>
+        <div class="answer-content">
+            {{this.content}}
+        </div>
+    </div>
+{{/each}}
