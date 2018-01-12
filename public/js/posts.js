@@ -1,7 +1,8 @@
 $(document).ready(function() {
-    
+
 $('.submit-button').click(function (e) {
     $(this).parent().submit()
+    $("#error").offset({left:e.pageX,top:e.pageY});
 })
 
   $('.vote-up').submit(function (e) {
@@ -16,7 +17,9 @@ $('.submit-button').click(function (e) {
           $('#answer-' + response.id).html(response.score);
       },
       error: function(err) {
-        console.log(err.messsage);
+          window.setTimeout(hidewindow, 1000)
+          $('#error').css("opacity", 50);
+          $('#error').html(err.responseText);
       }
     });
   });
@@ -33,10 +36,16 @@ $('.submit-button').click(function (e) {
         $('#answer-' + response.id).html(response.score);
       },
       error: function(err) {
-        console.log(err.messsage);
+        window.setTimeout(hidewindow, 1000)
+        $('#error').css("opacity", 50);
+        $('#error').html(err.responseText);
       }
   })
 
   });
+
+  const hidewindow = function(){
+    $('#error').animate({"opacity":0}, 500)
+    }
 
 });

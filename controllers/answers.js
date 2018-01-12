@@ -1,25 +1,25 @@
-const answer = require('../models/answer')
+const Post = require('../models/post')
 const Answer = require('../models/answer')
 
 module.exports = (app) => {
-    app.post('/answers/:answerId/comments', function (req, res) {
+    app.post('/posts/:postId/comments', function (req, res) {
         // If not logged in, do this
-        console.log(req.user)
         if (req.user == null) {
             res.redirect('/login');
             return
         }
         // New comment for answer
         let answer = new Answer(req.body);
+        answer.author = req.user
         // Find the original answer to put new comment on
-        answer.findById(req.params.answerId)
-        .then((answer) => {
-            answer.answers.unshift(answer)
-            return answer.save()
-        }).then((answer) => {
+        Post.findById(req.params.postId)
+        .then((post) => {
+            post.answers.unshift(answer)
+            return post.save()
+        }).then((post) => {
             return answer.save()
         }).then(() => {
-            res.redirect('/answers/' + req.params.answerId)
+            res.redirect('/posts/' + req.params.postId)
         }).catch((err) => {
             console.log(err.message, "Could not save comment!")
             res.send(err.message)
@@ -38,25 +38,34 @@ module.exports = (app) => {
     // Voting up; uses AJAX/jquery to get here
     app.put('/comments/:answerId/vote-up', (req, res) => {
         // Find answer
-        answer.findById(req.params.answerId)
+        Answer.findById(req.params.answerId)
         .then((answer) => {
             // Must be logged in to alter
             if(req.user === null){
-                console.log("You must be logged in!")
+                res.status(401).send("Must be logged in!");
+            }
+            else if (answer.downVotes.includes(req.user._id)){
+                answer.downVotes.pull(req.user._id)
+                answer.save()
+                answer.voteScore = answer.voteScore + 1
+                let response = {
+                    "success" : "Updated Successfully",
+                    "status" : 200,
+                    "id": req.params.answerId,
+                    "score": answer.voteScore
+                }
+                res.end(JSON.stringify(response));
             }
             // If user is inside list of people who already voted, deny
             else if(answer.upVotes.includes(req.user._id)){
-                console.log(answer.upVotes)
-                console.log("You already voted on this answer")
-                console.log(req.user._id)
-                res.status(200);
+                res.status(401).send("Already voted up");
             }
             // Otherwise, change score
             else{
                 answer.upVotes.push(req.user._id)
                 answer.voteScore = answer.voteScore + 1
                 answer.save();
-                var response = {
+                let response = {
                     "success" : "Updated Successfully",
                     "status" : 200,
                     "id": req.params.answerId,
@@ -73,18 +82,30 @@ module.exports = (app) => {
         Answer.findById(req.params.answerId)
         .then((answer) => {
             if(req.user === null){
-                console.log("You must be logged in!")
+                res.status(401).send("Must be logged in!");
+            }
+
+            else if (answer.upVotes.includes(req.user._id)){
+                answer.upVotes.pull(req.user._id)
+                answer.save()
+                answer.voteScore = answer.voteScore - 1
+                let response = {
+                    "success" : "Updated Successfully",
+                    "status" : 200,
+                    "id": req.params.answerId,
+                    "score": answer.voteScore
+                }
+                res.end(JSON.stringify(response));
             }
             else if(answer.downVotes.includes(req.user._id)){
-                console.log(answer.downVotes)
-                console.log(req.user._id)
-                console.log("You already voted on this answer")
+                res.status(401).send("Already voted down");
             }
+
             else{
                 answer.downVotes.push(req.user._id)
                 answer.voteScore = answer.voteScore - 1
                 answer.save();
-                var response = {
+                let response = {
                     "success" : "Updated Successfully",
                     "status" : 200,
                     "id": req.params.answerId,
