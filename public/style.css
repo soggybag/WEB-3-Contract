@@ -1,16 +1,108 @@
-/* Woo */
+/* Logged in components */
 .logged-in {
-    display: none;
+    display: none !important;
 }
 
 .logged-out {
-    display: block;
+    display: inline !important;
 }
 
 .logged .logged-in {
-    display: block;
+    display: inline !important;
 }
 
 .logged .logged-out{
-    display: none;
+    display: none !important;
+}
+
+.container{
+    margin-top: 40px;
+}
+/* Navbar */
+
+.stick-navbar{
+    display: inline-flex;
+    position: sticky;
+    justify-content: center;
+    top: 0px;
+    overflow: visible;
+    border-top: 4px solid green;
+    border-bottom: 1px solid #BBB;
+    box-shadow: 0px 1px 3px #BBB;
+    width: 100%;
+}
+
+
+.stick-navbar *{
+    margin: 0px 5px;
+}
+
+.stick-navbar ul{
+    margin: 5px;
+    display: inline-flex;
+    flex-direction: row;
+    list-style: none;
+
+}
+
+.stick-navbar ul a:hover{
+    background-color: #EEE;
+}
+.stick-navbar ul a{
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+}
+
+#logo{
+    padding: 0px;
+}
+
+
+
+
+/* Searches */
+
+.search-set{
+    white-space: nowrap;
+    justify-content: flex-end;
+}
+
+#search-button{
+    margin: 0px !important;
+    position: relative;
+    right: 0%;
+    width: 80%;
+    text-align: right;
+
+}
+
+/*#search-button:focus{
+    animation-name: search-stretch;
+    animation-duration: 1s;
+    width: 350%;
+}*/
+
+/*@keyframes search-stretch {
+    from {width: 30%;}
+    to {width: 350%;}
+}*/
+
+#search-button + button{
+    position: relative;
+    /*opacity: 0;*/
+    right: 0%;
+    /*display: none;*/
+    width: 15%;
+    height: 70%;
+    border-radius: 10px;
+}
+#search-button:focus + button{
+    display: inherit;
+    opacity: 100;
+}
+
+#search-submit:active{
+    display: inherit;
+    opacity: 100;
 }
